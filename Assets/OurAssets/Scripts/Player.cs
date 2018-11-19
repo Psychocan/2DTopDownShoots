@@ -29,11 +29,13 @@ public class Player : LivingEntity {
     private Vector2 lastVel;
     private float lastTime;
     private float lerpTime;
+    private bool facingRight;
 
     protected override void Start () {
         base.Start();
         rb2D = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        facingRight = true;
     }
     
     protected override void Update () {
@@ -75,29 +77,41 @@ public class Player : LivingEntity {
             //check the direction the player is looking and change the animations and sprites to match
             if (myChild.transform.localPosition.y <= 0) {
                 if (animCont != null) { animCont.SetTrigger("down"); }
+
                 if (myChild.transform.localPosition.x >= 0) {
                     /*facing down right*/
                     if (jetPack != null) { jetPack.sortingOrder = 0; }
                     if (flames != null) { flames.sortingOrder = -3; }
-                    transform.localScale = new Vector3(1, 1, 1);
-                } else {
+                    if (!facingRight) { Flip(); }
+                    Debug.Log("down right");
+                }
+
+                else {
                     /*facing down left*/
                     if (jetPack != null) { jetPack.sortingOrder = 1; }
                     if (flames != null) { flames.sortingOrder = 0; }
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    if (facingRight) { Flip(); }
+                    Debug.Log("down left");
                 }
-            } else {
+            }
+
+            else {
                 if (animCont != null) { animCont.SetTrigger("up"); }
+
                 if (myChild.transform.localPosition.x >= 0) {
                     /*facing up right*/
                     if (jetPack != null) { jetPack.sortingOrder = 0; }
                     if (flames != null) { flames.sortingOrder = -3; }
-                    transform.localScale = new Vector3(1, 1, 1);
-                } else {
+                    if (!facingRight) { Flip(); }
+                    Debug.Log("up right");
+                }
+
+                else {
                     /*facing up left*/
                     if (jetPack != null) { jetPack.sortingOrder = 1; }
                     if (flames != null) { flames.sortingOrder = 0; }
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    if (facingRight) { Flip(); }
+                    Debug.Log("up left");
                 }
             }
             myChild.transform.position = point;
@@ -108,6 +122,16 @@ public class Player : LivingEntity {
 
     }
 
+    private void Flip() {
+        facingRight = !facingRight;
+        //Debug.Log("Fliped " + facingRight.ToString());
+        Vector3 scalar = transform.localScale;
+        scalar.x *= -1;
+        Vector3 pos = myChild.transform.position;
+        pos.x *= -1;
+        myChild.transform.position = pos;
+        transform.localScale = scalar;
+    }
 
 
     private void Attack() {
