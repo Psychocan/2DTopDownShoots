@@ -163,6 +163,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4855112860765222}
+  - component: {fileID: 114939814695599718}
+  - component: {fileID: 61444651981693246}
+  - component: {fileID: 50308505402547730}
   m_Layer: 0
   m_Name: SpaceBoi
   m_TagString: Untagged
@@ -309,6 +312,67 @@ Transform:
   m_Father: {fileID: 4630806753899182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50308505402547730
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951565123075898}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &61444651981693246
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951565123075898}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &114939814695599718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951565123075898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d517ef23ea16d54abbf04e09cbcae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  sword: {fileID: 0}
+  speed: 5
+  dashSpeed: 0
+  dashCooldown: 0
 --- !u!212 &212140975780224076
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -351,7 +415,7 @@ SpriteRenderer:
   m_Size: {x: 2.38, y: 2.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212271809027671424
 SpriteRenderer:
@@ -395,7 +459,7 @@ SpriteRenderer:
   m_Size: {x: 0.53, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212308155524947568
 SpriteRenderer:
@@ -439,7 +503,7 @@ SpriteRenderer:
   m_Size: {x: 1.53, y: 1.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212328422260864166
 SpriteRenderer:
@@ -483,7 +547,7 @@ SpriteRenderer:
   m_Size: {x: 3.02, y: 3.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212605007897778444
 SpriteRenderer:
@@ -527,7 +591,7 @@ SpriteRenderer:
   m_Size: {x: 2.19, y: 2.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212708694937660080
 SpriteRenderer:
@@ -571,7 +635,7 @@ SpriteRenderer:
   m_Size: {x: 2.36, y: 2.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212779715893305246
 SpriteRenderer:
@@ -615,7 +679,7 @@ SpriteRenderer:
   m_Size: {x: 0.53, y: 1.33}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212780256238057742
 SpriteRenderer:
@@ -659,7 +723,7 @@ SpriteRenderer:
   m_Size: {x: 0.87, y: 1.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212938812751749552
 SpriteRenderer:
@@ -703,5 +767,5 @@ SpriteRenderer:
   m_Size: {x: 2.88, y: 2.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
