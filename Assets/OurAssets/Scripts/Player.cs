@@ -10,7 +10,8 @@ public class Player : LivingEntity {
     [Tooltip("The players melee weapon")]
     [SerializeField] private MeleeWeapon sword;
     [Header("Movement")]
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 10;
+    [SerializeField] private float slowDown = 10;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashCooldown;
     [Header("Sprite Shite")]
@@ -51,7 +52,7 @@ public class Player : LivingEntity {
     private void Move() {
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (moveInput.sqrMagnitude <= 0) {
-            if (moveVelocity.sqrMagnitude > 0) { moveVelocity = Vector2.Lerp(lastVel, Vector2.zero, lerpTime); lerpTime += 10 * Time.deltaTime; }
+            if (moveVelocity.sqrMagnitude > 0) { moveVelocity = Vector2.Lerp(lastVel, Vector2.zero, lerpTime); lerpTime += slowDown * Time.deltaTime; }
         }
 
         else { moveVelocity = moveInput.normalized * speed; lastVel = moveVelocity; lerpTime = 0; }
@@ -83,7 +84,7 @@ public class Player : LivingEntity {
                     /*facing down left*/
                     if (jetPack != null) { jetPack.sortingOrder = 1; }
                     if (flames != null) { flames.sortingOrder = 0; }
-                    transform.localScale = new Vector3(1, -1, 1);
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
             } else {
                 if (animCont != null) { animCont.SetTrigger("up"); }
@@ -93,10 +94,10 @@ public class Player : LivingEntity {
                     if (flames != null) { flames.sortingOrder = -3; }
                     transform.localScale = new Vector3(1, 1, 1);
                 } else {
-                    /*facing up right*/
+                    /*facing up left*/
                     if (jetPack != null) { jetPack.sortingOrder = 1; }
                     if (flames != null) { flames.sortingOrder = 0; }
-                    transform.localScale = new Vector3(1, -1, 1);
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
             myChild.transform.position = point;
